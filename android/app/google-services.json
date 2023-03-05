@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "996044745806",
+    "project_id": "mspr-epsi-coffee",
+    "storage_bucket": "mspr-epsi-coffee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996044745806:android:c2fdd9594c1764e4b0671f",
+        "android_client_info": {
+          "package_name": "com.example.mspr_coffee_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996044745806-our268eku2utn5pmrohtv650av6mb7pf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDooWop2wezrbnum4r6LrChPCG0Tl2DMbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996044745806-our268eku2utn5pmrohtv650av6mb7pf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

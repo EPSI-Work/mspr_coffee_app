@@ -1,0 +1,6 @@
+{
+  "appTitle": "mspr_coffee_app",
+  "@appTitle": {
+    "description": "Titre de l'application"
+  }
+}
