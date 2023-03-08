@@ -1,31 +1,37 @@
 part of 'auth_bloc.dart';
 
-@immutable
-abstract class AuthState extends Equatable {}
-
-// When the user presses the signin or signup button the state is changed to loading first and then to Authenticated.
-class Loading extends AuthState {
-  @override
-  List<Object?> get props => [];
+enum AuthStatus {
+  loading,
+  unauthenticated,
+  authenticated,
+  error,
+  waitingScan,
 }
 
-// When the user is authenticated the state is changed to Authenticated.
-class Authenticated extends AuthState {
-  @override
-  List<Object?> get props => [];
+extension AuthStatusX on AuthStatus {
+  bool get loading => this == AuthStatus.loading;
+  bool get unauthenticated => this == AuthStatus.unauthenticated;
+  bool get authenticated => this == AuthStatus.authenticated;
+  bool get error => this == AuthStatus.error;
+  bool get waitingScan => this == AuthStatus.waitingScan;
 }
 
-// This is the initial state of the bloc. When the user is not authenticated the state is changed to Unauthenticated.
-class UnAuthenticated extends AuthState {
-  @override
-  List<Object?> get props => [];
-}
+class AuthState extends Equatable {
+  const AuthState({
+    this.status = AuthStatus.unauthenticated,
+    this.message = '',
+  });
 
-// If any error occurs the state is changed to AuthError.
-class AuthError extends AuthState {
-  final String error;
+  final AuthStatus status;
+  final String message;
 
-  AuthError(this.error);
   @override
-  List<Object?> get props => [error];
+  List<Object> get props => [status, message];
+
+  AuthState copyWith({AuthStatus? status, String? message}) {
+    return AuthState(
+      status: status ?? this.status,
+      message: message ?? this.message,
+    );
+  }
 }

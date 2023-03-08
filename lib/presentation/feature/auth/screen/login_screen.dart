@@ -18,7 +18,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
-            if (state is AuthError) {
+            if (state.status == AuthStatus.waitingScan) {
+              context.go(AppRoute.scanQrCode.path);
+            }
+            if (state.status == AuthStatus.error) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    state.error,
+                    state.message,
                     style: Theme.of(context).textTheme.headline6!.copyWith(
                           color: Colors.white,
                         ),
@@ -106,29 +108,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          TextFormField(
-                            controller: _passwordController,
-                            //validator: passwordValidator,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: "Mot de passe",
-                              prefixIcon: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 20 * 0.75),
-                                child: SvgPicture.asset(
-                                  "assets/icons/Lock.svg",
-                                  height: 24,
-                                  width: 24,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .color!
-                                      .withOpacity(0.3),
-                                ),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -152,9 +131,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          context.read<AuthBloc>().add(SignInRequested(
-                              _emailController.value.text,
-                              _passwordController.value.text));
+                          context.read<AuthBloc>().add(SignInWithEmail(
+                              email: _emailController.value.text));
                           //context.go(AppRoute.home.path);
                         }
                       },

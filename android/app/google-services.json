@@ -29,6 +29,13 @@
             {
               "client_id": "996044745806-our268eku2utn5pmrohtv650av6mb7pf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "996044745806-paf9t8qd3ocifb32m48me6r928mvirba.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.msprCoffeeApp"
+              }
             }
           ]
         }

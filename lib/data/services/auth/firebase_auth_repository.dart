@@ -32,8 +32,20 @@ class FirebaseAuthRepository {
     User? user;
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
-        .then((userCredential) => user = userCredential.user);
+        .then((userCredential) => user = userCredential.user)
+        .onError((error, stackTrace) => throw Exception(error.toString()));
     return user;
+  }
+
+  Future<void> signInWithEmail({
+    required String email,
+  }) async {
+    await FirebaseAuth.instance.sendSignInLinkToEmail(
+        email: email,
+        actionCodeSettings: ActionCodeSettings(
+          url: 'https://mspr-epsi-coffee.firebaseapp.com',
+          handleCodeInApp: true,
+        ));
   }
 
   Future<void> signOut() async {

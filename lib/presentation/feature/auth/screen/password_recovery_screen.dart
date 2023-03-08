@@ -100,7 +100,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
                     context
                         .read<UserBloc>()
                         .add(UserResetPassword(email: _emailController.text));
-                    context.read<AuthBloc>().add(LogOutRequested());
+                    context.read<AuthBloc>().add(LogOut());
                     setState(() {
                       isEmailSubmitted = true;
                     });

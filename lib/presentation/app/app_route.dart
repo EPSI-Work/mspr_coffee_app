@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/done_profile_setup_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/login_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/password_recovery_screen.dart';
+import 'package:mspr_coffee_app/presentation/feature/auth/screen/scan_qr_code_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/signup_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/terms_of_services_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/home/screen/home_screen.dart';
@@ -16,6 +17,7 @@ enum AppRoute {
   onboarding(path: '/onboarding', screen: OnBoardingScreen()),
 
   login(path: '/login', screen: LoginScreen()),
+  scanQrCode(path: '/scanQrCode', screen: ScanQrCodeScreen()),
   loginFromPasswordRecovery(path: '/loginFromPasswordRecovery'),
   passwordRecovery(path: '/passwordRecovery', screen: PasswordRecoveryScreen()),
 
@@ -66,6 +68,11 @@ enum AppRoute {
         name: AppRoute.login.name,
         path: AppRoute.login.path,
         builder: (context, state) => AppRoute.login.screen!,
+      ),
+      GoRoute(
+        name: AppRoute.scanQrCode.name,
+        path: AppRoute.scanQrCode.path,
+        builder: (context, state) => AppRoute.scanQrCode.screen!,
       ),
       GoRoute(
         name: AppRoute.loginFromPasswordRecovery.name,

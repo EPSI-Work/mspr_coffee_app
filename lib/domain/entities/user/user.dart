@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mspr_coffee_app/data/model/user/user.dart' as data;
+import 'package:mspr_coffee_app/data/models/user/user.dart' as data;
 part 'user.freezed.dart';
 part 'user.g.dart';
 

@@ -161,11 +161,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // Validate Form
                       if (_formKey.currentState!.validate()) {
                         if (_termsLicence) {
-                          context.read<AuthBloc>().add(RegisterRequested(
+                          /*context.read<AuthBloc>().add(RegisterRequested(
                                 _emailController.value.text,
                                 _passwordController.value.text,
                                 _firstnameController.value.text,
-                              ));
+                              ));*/
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: Theme.of(context).primaryColor,

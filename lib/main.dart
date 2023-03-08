@@ -9,6 +9,8 @@ import 'src/settings/settings_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  //Print the firebase project name
+  print(Firebase.app().options.projectId);
   // Set up the SettingsController, which will glue user settings to multiple
   // Flutter Widgets.
   final settingsController = SettingsController(SettingsService());

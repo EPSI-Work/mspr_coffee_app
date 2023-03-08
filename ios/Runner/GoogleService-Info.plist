@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>522780245171-7cp245tl6drcmfvgqnsggp2kn8t49d35.apps.googleusercontent.com</string>
+	<string>996044745806-paf9t8qd3ocifb32m48me6r928mvirba.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.522780245171-7cp245tl6drcmfvgqnsggp2kn8t49d35</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>522780245171-vg8er3upnfafgc4vcd8aask5qslu6r1v.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.996044745806-paf9t8qd3ocifb32m48me6r928mvirba</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDnVVRgo6dy4sAgaj3kQYapJs3TxzMUzkE</string>
+	<string>AIzaSyCQttydNv72FG1b2tIqq2wTCjOQDOhvDn4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>522780245171</string>
+	<string>996044745806</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.msprCoffeeApp</string>
 	<key>PROJECT_ID</key>
-	<string>dhomotic</string>
+	<string>mspr-epsi-coffee</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dhomotic.appspot.com</string>
+	<string>mspr-epsi-coffee.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:522780245171:ios:8c556a55364160bdd844c6</string>
-	<key>DATABASE_URL</key>
-	<string>https://dhomotic-default-rtdb.europe-west1.firebasedatabase.app</string>
+	<string>1:996044745806:ios:65d1be167675ea92b0671f</string>
 </dict>
 </plist>

@@ -1,10 +1,10 @@
-import 'package:mspr_coffee_app/domain/entity/entity.dart';
-import 'package:mspr_coffee_app/data/firestore/repository/user_repository/user_repository.dart'
-    as dataUserRepository;
+import 'package:mspr_coffee_app/domain/entities/entity.dart';
+import 'package:mspr_coffee_app/data/repositories/firestore/user_repository/user_repository.dart'
+    as data_user_repository;
 
 class UserRepository {
-  final dataUserRepository.UserRepository _userRepository =
-      dataUserRepository.UserRepository();
+  final data_user_repository.UserRepository _userRepository =
+      data_user_repository.UserRepository();
 
   Future<User> getOne({required String docId}) async {
     return User.fromDataModel(await _userRepository.fetchOne(docId: docId));

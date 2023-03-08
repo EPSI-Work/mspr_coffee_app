@@ -1,10 +1,13 @@
 import 'dart:developer';
 
-import 'package:mspr_coffee_app/domain/repository/user_repository/user_repository.dart';
+import 'package:mspr_coffee_app/domain/repositories/user_repository/user_repository.dart';
 import 'package:mspr_coffee_app/data/services/auth/firebase_auth_repository.dart';
-import 'package:mspr_coffee_app/domain/entity/entity.dart';
+import 'package:mspr_coffee_app/domain/entities/entity.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
+import 'package:mspr_coffee_app/data/repositories/http/auth_repository/auth_repository.dart'
+    as data_auth_repository;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mspr_coffee_app/domain/responses/sucess_response.dart';
 
 class AuthRepository {
   static FirebaseAuthRepository firebaseAuthRepository =
@@ -34,6 +37,20 @@ class AuthRepository {
           throw Exception("Authentification échouée.");
         }*/
       });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<SuccessResponse> signInWithEmail({required String email}) async {
+    try {
+      return SuccessResponse(200, {
+        "message": "Un email de connexion vous a été envoyé.",
+      });
+      return await data_auth_repository.AuthRepository()
+          .signInWithEmail(email: email)
+          .then(
+              (value) => SuccessResponse(value.statusCode, value.responseJson));
     } catch (e) {
       rethrow;
     }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mspr_coffee_app/data/model/user/user.dart';
+import 'package:mspr_coffee_app/data/models/user/user.dart';
 import 'package:mspr_coffee_app/data/services/auth/firebase_auth_repository.dart';
 
 class UserRepository {

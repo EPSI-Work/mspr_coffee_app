@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:mspr_coffee_app/common/error/app_exception.dart';
 import 'package:mspr_coffee_app/data/services/auth/firebase_auth_repository.dart';
-import 'package:mspr_coffee_app/domain/entity/entity.dart';
-import 'package:mspr_coffee_app/domain/repository/auth_repository/auth_repository.dart';
+import 'package:mspr_coffee_app/domain/entities/entity.dart';
+import 'package:mspr_coffee_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/auth_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
@@ -20,8 +20,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   bool startListeningAuthChange = false;
   AppBloc({required this.authBloc}) : super(const AppState()) {
     authBloc.stream.listen((authState) {
-      switch (authState.runtimeType) {
-        case Authenticated:
+      switch (authState.status) {
+        case AuthStatus.authenticated:
           _firebaseCheckAuthState();
           startListeningAuthChange = true;
           break;
