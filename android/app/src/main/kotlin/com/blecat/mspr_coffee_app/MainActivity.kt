@@ -1,4 +1,4 @@
-package com.example.mspr_coffee_app
+package com.blecat.mspr_coffee_app
 
 import io.flutter.embedding.android.FlutterActivity
 

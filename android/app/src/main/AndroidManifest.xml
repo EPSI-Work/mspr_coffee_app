@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mspr_coffee_app">
+    package="com.blecat.mspr_coffee_app">
    <application
         android:label="mspr_coffee_app"
         android:name="${applicationName}"
