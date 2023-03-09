@@ -33,7 +33,72 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               status: AuthStatus.error,
               message: 'Mot de passe incorrect.',
             ));
+          } else if (error.code == 'invalid-email') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Email invalide.',
+            ));
+          } else if (error.code == 'user-disabled') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Utilisateur désactivé.',
+            ));
+          } else if (error.code == 'too-many-requests') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Trop de tentatives de connexion.',
+            ));
+          } else {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Erreur inconnue.',
+            ));
           }
+        } else {
+          emit(state.copyWith(
+            status: AuthStatus.error,
+            message: 'Erreur inconnue.',
+          ));
+        }
+      });
+    });
+    on<ScanQrCode>((event, emit) async {
+      emit(state.copyWith(status: AuthStatus.loading));
+      await authRepository
+          .signInWithCustomToken(token: event.token)
+          .then((user) {
+        emit(state.copyWith(
+            status: AuthStatus.authenticated,
+            message: "Authentification réussie !"));
+      }).onError((error, stackTrace) {
+        if (error is FirebaseAuthException) {
+          if (error.code == 'user-not-found') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Aucun utilisateur trouvé pour cet email.',
+            ));
+          } else if (error.code == 'wrong-password') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Mot de passe incorrect.',
+            ));
+          } else if (error.code == 'invalid-custom-token') {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Token invalide.',
+            ));
+          } else {
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Une erreur est survenue.',
+            ));
+          }
+        } else {
+          debugPrint(error.toString());
+          emit(state.copyWith(
+            status: AuthStatus.error,
+            message: 'Une erreur est survenue.',
+          ));
         }
       });
     });

@@ -1,4 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mspr_coffee_app/presentation/app/bloc/auth_bloc.dart';
 
 class ScanQrCodeScreen extends StatelessWidget {
   const ScanQrCodeScreen({super.key});
@@ -41,7 +45,13 @@ class ScanQrCodeScreen extends StatelessWidget {
                 ),
                 Flexible(
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await FlutterBarcodeScanner.scanBarcode(
+                                '#ff6666', 'Cancel', true, ScanMode.QR)
+                            .then((value) {
+                          context.read<AuthBloc>().add(ScanQrCode(value));
+                        });
+                      },
                       child: Text(
                         'Scan QR Code',
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(

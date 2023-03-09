@@ -56,6 +56,23 @@ class AuthRepository {
     }
   }
 
+  //Sign in from a custom token (for example, a token from a custom authentication server)
+  Future<User> signInWithCustomToken({required String token}) async {
+    try {
+      return await firebaseAuthRepository
+          .signInWithCustomToken(token: token)
+          .then((signedUser) async {
+        if (signedUser != null) {
+          return await whoAmI(firebaseUser: signedUser).then((user) => user);
+        } else {
+          throw Exception("Authentification échouée.");
+        }
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<firebase.User> register({
     required String email,
     required String password,

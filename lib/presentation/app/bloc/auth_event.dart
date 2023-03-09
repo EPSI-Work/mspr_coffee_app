@@ -8,7 +8,10 @@ abstract class AuthEvent extends Equatable {
 }
 
 class ScanQrCode extends AuthEvent {
-  ScanQrCode() : super([]);
+  final String token;
+  ScanQrCode(
+    this.token,
+  ) : super([token]);
 }
 
 class SignInWithEmail extends AuthEvent {

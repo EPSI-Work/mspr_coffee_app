@@ -48,6 +48,13 @@ class FirebaseAuthRepository {
         ));
   }
 
+  //Sign in from a custom token (for example, a token from a custom authentication server)
+  Future<User?> signInWithCustomToken({required String token}) async {
+    return await FirebaseAuth.instance
+        .signInWithCustomToken(token)
+        .then((userCredential) => userCredential.user);
+  }
+
   Future<void> signOut() async {
     try {
       await firebaseAuthInstance.signOut();
