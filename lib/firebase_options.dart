@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDooWop2wezrbnum4r6LrChPCG0Tl2DMbo',
-    appId: '1:996044745806:android:c2fdd9594c1764e4b0671f',
+    appId: '1:996044745806:android:02e7c65c1958a31db0671f',
     messagingSenderId: '996044745806',
     projectId: 'mspr-epsi-coffee',
     storageBucket: 'mspr-epsi-coffee.appspot.com',
@@ -59,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCQttydNv72FG1b2tIqq2wTCjOQDOhvDn4',
-    appId: '1:996044745806:ios:65d1be167675ea92b0671f',
+    appId: '1:996044745806:ios:248e37aff75cf789b0671f',
     messagingSenderId: '996044745806',
     projectId: 'mspr-epsi-coffee',
     storageBucket: 'mspr-epsi-coffee.appspot.com',
-    iosClientId: '996044745806-paf9t8qd3ocifb32m48me6r928mvirba.apps.googleusercontent.com',
-    iosBundleId: 'com.example.msprCoffeeApp',
+    iosClientId: '996044745806-cbpmh0h4f1ua5d710ktk7uhl41pon3hi.apps.googleusercontent.com',
+    iosBundleId: 'com.blecat.msprCoffeeApp',
   );
 }
