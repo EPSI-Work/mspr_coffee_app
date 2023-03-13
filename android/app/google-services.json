@@ -7,6 +7,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:996044745806:android:02e7c65c1958a31db0671f",
+        "android_client_info": {
+          "package_name": "com.blecat.mspr_coffee_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996044745806-our268eku2utn5pmrohtv650av6mb7pf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDooWop2wezrbnum4r6LrChPCG0Tl2DMbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996044745806-our268eku2utn5pmrohtv650av6mb7pf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "996044745806-paf9t8qd3ocifb32m48me6r928mvirba.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.msprCoffeeApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:996044745806:android:c2fdd9594c1764e4b0671f",
         "android_client_info": {
           "package_name": "com.example.mspr_coffee_app"
