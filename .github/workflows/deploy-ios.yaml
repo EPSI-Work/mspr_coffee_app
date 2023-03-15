@@ -39,6 +39,8 @@ jobs:
           project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
       - name: Download AppleAuthKey and GCloud KeyFile Json from GCP bucket
         run: |
+          pwd
+          echo ${{ secrets.APPLE_AUTH_KEY_PATH }}
           gsutil cp gs://${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}/${{ secrets.APPLE_AUTH_KEY_FILENAME }} .
           gsutil cp gs://${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}/${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }} ./mspr_coffee_app/ios/${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}
       - name: Deploy iOS Beta to TestFlight via Fastlane
