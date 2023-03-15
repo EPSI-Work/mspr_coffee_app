@@ -38,11 +38,14 @@ jobs:
         with:
           project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
       - name: Download AppleAuthKey and GCloud KeyFile Json from GCP bucket
+        env: 
+          APPLE_AUTH_KEY_FILENAME: ${{ secrets.APPLE_AUTH_KEY_FILENAME }}
+          GOOGLE_CLOUD_KEY_FILENAME: ${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}
+          GC_BUCKET_NAME: ${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}
         run: |
           pwd
           GC_BUCKET_NAME = ${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}
-          APPLE_AUTH_KEY_FILENAME = ${{ secrets.APPLE_AUTH_KEY_FILENAME }}
-          GOOGLE_CLOUD_KEY_FILENAME = ${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}
+          
           echo "gs://${GC_BUCKET_NAME}/${APPLE_AUTH_KEY_FILENAME}"
           gsutil cp gs://${GC_BUCKET_NAME}/${APPLE_AUTH_KEY_FILENAME} .
           gsutil cp gs://${GC_BUCKET_NAME}/${GOOGLE_CLOUD_KEY_FILENAME} ./mspr_coffee_app/ios/${GOOGLE_CLOUD_KEY_FILENAME}
