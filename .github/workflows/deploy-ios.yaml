@@ -33,10 +33,14 @@ jobs:
         uses: "google-github-actions/auth@v1"
         with:
           credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+        with:
+          project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
       - name: Download AppleAuthKey and GCloud KeyFile Json from GCP bucket
         run: |
           gsutil cp gs://'${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}'/'${{ secrets.APPLE_AUTH_KEY_FILENAME }}' .
-          gsutil cp gs://'${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}'/'${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}' .
+          gsutil cp gs://'${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}'/'${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}' ./mspr_coffee_app/ios/'${{ secrets.GOOGLE_CLOUD_KEY_FILENAME }}'
       - name: Deploy iOS Beta to TestFlight via Fastlane
         uses: maierj/fastlane-action@v1.4.0
         with:
