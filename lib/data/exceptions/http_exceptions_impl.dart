@@ -23,13 +23,14 @@ class BadRequestException extends HttpException {
       : errors = [],
         super(message);
 
-  BadRequestException.withErrors(this.errors) : super('Bad Request');
+  BadRequestException.withErrors(String message, this.errors) : super(message);
 
   factory BadRequestException.fromJson(Map<String, dynamic> json) {
     if (json['errors'] != null) {
       final errorsJson = json['errors'] as List<dynamic>;
       final errors = errorsJson.map((e) => HttpError.fromJson(e)).toList();
-      return BadRequestException.withErrors(errors);
+      return BadRequestException.withErrors(
+          json['message'] ?? 'Bad Request', errors);
     }
     return BadRequestException(json['message'] ?? 'Bad Request');
   }

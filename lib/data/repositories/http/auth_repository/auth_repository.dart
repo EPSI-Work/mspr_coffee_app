@@ -6,7 +6,7 @@ class AuthRepository extends HttpAuthService {
     required String email,
   }) async {
     return await post(
-      endpoint: '/auth/signInWithEmail',
+      endpoint: '/signInWithEmail',
       body: {
         'email': email,
       },

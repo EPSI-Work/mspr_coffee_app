@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mspr_coffee_app/data/exceptions/http_exceptions_impl.dart';
 import 'package:mspr_coffee_app/data/services/auth/firebase_auth_repository.dart';
 import 'package:mspr_coffee_app/domain/entities/entity.dart';
+import 'package:mspr_coffee_app/data/exceptions/http_exception.dart';
 import 'package:mspr_coffee_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -49,16 +51,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               message: 'Trop de tentatives de connexion.',
             ));
           } else {
+            print(error.toString());
+            print(stackTrace);
             emit(state.copyWith(
               status: AuthStatus.error,
               message: 'Erreur inconnue.',
             ));
           }
         } else {
-          emit(state.copyWith(
-            status: AuthStatus.error,
-            message: 'Erreur inconnue.',
-          ));
+          if (error is HttpException) {
+            if (error is BadRequestException) {
+              emit(state.copyWith(
+                status: AuthStatus.error,
+                message: error.errors.first.message,
+              ));
+            }
+          } else {
+            print(error.runtimeType);
+            print(error.toString());
+            print(stackTrace);
+            emit(state.copyWith(
+              status: AuthStatus.error,
+              message: 'Erreur inconnue.',
+            ));
+          }
         }
       });
     });
@@ -94,7 +110,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             ));
           }
         } else {
-          debugPrint(error.toString());
+          print(error.toString());
           emit(state.copyWith(
             status: AuthStatus.error,
             message: 'Une erreur est survenue.',

@@ -43,17 +43,9 @@ class AuthRepository {
   }
 
   Future<SuccessResponse> signInWithEmail({required String email}) async {
-    try {
-      return SuccessResponse(200, {
-        "message": "Un email de connexion vous a été envoyé.",
-      });
-      return await data_auth_repository.AuthRepository()
-          .signInWithEmail(email: email)
-          .then(
-              (value) => SuccessResponse(value.statusCode, value.responseJson));
-    } catch (e) {
-      rethrow;
-    }
+    return await data_auth_repository.AuthRepository()
+        .signInWithEmail(email: email)
+        .then((value) => SuccessResponse(value.statusCode, value.responseJson));
   }
 
   //Sign in from a custom token (for example, a token from a custom authentication server)
