@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mspr_coffee_app/presentation/app/app_route.dart';
+import 'package:mspr_coffee_app/presentation/feature/overview/screen/overview_screen.dart';
 
 class HomeView extends StatefulWidget {
   final int index;
@@ -53,7 +54,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Container(
+      /*floatingActionButton: Container(
         height: 64,
         width: 64,
         child: FittedBox(
@@ -65,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,*/
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: 20 / 2),
         color: Theme.of(context).brightness == Brightness.light
@@ -111,7 +112,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: PageView(
         controller: _pageController,
-        children: [],
+        children: const [
+          OverviewScreen(),
+        ],
       ),
     );
   }

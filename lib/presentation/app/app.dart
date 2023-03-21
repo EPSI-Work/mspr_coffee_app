@@ -109,7 +109,7 @@ class _AppRootState extends State<AppRoot> {
                   title: "Mspr Coffee App",
                   debugShowCheckedModeBanner: false,
                   theme: lightTheme(context),
-                  darkTheme: darkTheme(context),
+                  darkTheme: lightTheme(context),
                 );
               },
             ),
