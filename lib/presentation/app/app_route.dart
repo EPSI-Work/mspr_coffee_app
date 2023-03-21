@@ -8,6 +8,7 @@ import 'package:mspr_coffee_app/presentation/feature/auth/screen/signup_screen.d
 import 'package:mspr_coffee_app/presentation/feature/auth/screen/terms_of_services_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/home/screen/home_screen.dart';
 import 'package:mspr_coffee_app/presentation/feature/onBoarding/screen/onBoarding_screen.dart';
+import 'package:mspr_coffee_app/presentation/feature/product/screen/product_screen.dart';
 import 'package:mspr_coffee_app/src/settings/settings_controller.dart';
 import 'package:mspr_coffee_app/src/settings/settings_view.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,9 @@ enum AppRoute {
   doneProfileSetup(path: '/doneProfileSetup', screen: DoneProfileSetupScreen()),
 
   home(path: '/home'),
-  settings(path: '/settings');
+  settings(path: '/settings'),
+
+  product(path: '/products/:id');
 
   final String path;
   final Widget? screen;
@@ -98,6 +101,20 @@ enum AppRoute {
         name: AppRoute.doneProfileSetup.name,
         path: AppRoute.doneProfileSetup.path,
         builder: (context, state) => AppRoute.doneProfileSetup.screen!,
+      ),
+      GoRoute(
+        name: AppRoute.product.name,
+        path: AppRoute.product.path,
+        builder: (context, state) {
+          if (state.params['id'] != null &&
+              int.tryParse(state.params['id']!) != null) {
+            return ProductScreen(
+              id: state.params['id']!,
+            );
+          } else {
+            return AppRoute.home.screen!;
+          }
+        },
       ),
     ];
   }

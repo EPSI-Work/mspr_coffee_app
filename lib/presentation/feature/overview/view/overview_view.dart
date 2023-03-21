@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mspr_coffee_app/presentation/app/app_route.dart';
 
 class OverviewView extends StatelessWidget {
   const OverviewView({super.key});
@@ -133,26 +135,35 @@ class OverviewView extends StatelessWidget {
                                               .headlineSmall,
                                           textAlign: TextAlign.start,
                                         ),
-                                        Container(
-                                          height: 36,
-                                          width: 36,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.4),
-                                                spreadRadius: 3,
-                                                blurRadius: 12,
-                                                offset: const Offset(3, 6),
-                                              ),
-                                            ],
-                                          ),
-                                          child: Center(
-                                            child: Icon(Icons.add,
-                                                color: Colors.white, size: 28),
+                                        GestureDetector(
+                                          onTap: () {
+                                            context.pushNamed(
+                                              AppRoute.product.name,
+                                              params: {'id': index.toString()},
+                                            );
+                                          },
+                                          child: Container(
+                                            height: 36,
+                                            width: 36,
+                                            decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.4),
+                                                  spreadRadius: 3,
+                                                  blurRadius: 12,
+                                                  offset: const Offset(3, 6),
+                                                ),
+                                              ],
+                                            ),
+                                            child: Center(
+                                              child: Icon(Icons.add,
+                                                  color: Colors.white,
+                                                  size: 28),
+                                            ),
                                           ),
                                         )
                                       ],
