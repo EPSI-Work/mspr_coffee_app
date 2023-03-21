@@ -12,6 +12,7 @@ class Product with _$Product {
   const factory Product({
     String? id,
     String? name,
+    String? subtitle,
     int? stock,
     DateTime? createdAt,
     Details? details,

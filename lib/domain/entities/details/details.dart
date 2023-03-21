@@ -9,7 +9,7 @@ part 'details.g.dart';
 class Details with _$Details {
   const Details._();
   const factory Details({
-    int? price,
+    double? price,
     String? description,
     String? color,
   }) = _Details;

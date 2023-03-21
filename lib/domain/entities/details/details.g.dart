@@ -7,7 +7,7 @@ part of 'details.dart';
 // **************************************************************************
 
 _$_Details _$$_DetailsFromJson(Map<String, dynamic> json) => _$_Details(
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String?,
       color: json['color'] as String?,
     );

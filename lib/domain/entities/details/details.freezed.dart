@@ -20,7 +20,7 @@ Details _$DetailsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Details {
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get color => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $DetailsCopyWith<$Res> {
   factory $DetailsCopyWith(Details value, $Res Function(Details) then) =
       _$DetailsCopyWithImpl<$Res, Details>;
   @useResult
-  $Res call({int? price, String? description, String? color});
+  $Res call({double? price, String? description, String? color});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$DetailsCopyWithImpl<$Res, $Val extends Details>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_DetailsCopyWith<$Res> implements $DetailsCopyWith<$Res> {
       __$$_DetailsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? price, String? description, String? color});
+  $Res call({double? price, String? description, String? color});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_DetailsCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ class _$_Details extends _Details with DiagnosticableTreeMixin {
       _$$_DetailsFromJson(json);
 
   @override
-  final int? price;
+  final double? price;
   @override
   final String? description;
   @override
@@ -173,7 +173,7 @@ class _$_Details extends _Details with DiagnosticableTreeMixin {
 
 abstract class _Details extends Details {
   const factory _Details(
-      {final int? price,
+      {final double? price,
       final String? description,
       final String? color}) = _$_Details;
   const _Details._() : super._();
@@ -181,7 +181,7 @@ abstract class _Details extends Details {
   factory _Details.fromJson(Map<String, dynamic> json) = _$_Details.fromJson;
 
   @override
-  int? get price;
+  double? get price;
   @override
   String? get description;
   @override

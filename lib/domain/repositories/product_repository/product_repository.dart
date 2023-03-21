@@ -4,19 +4,33 @@ import 'package:mspr_coffee_app/data/repositories/http/product_repository/produc
     as data_product_repository;
 
 class ProductRepository {
-  final data_product_repository.ProductRepository _productRepository =
-      data_product_repository.ProductRepository(
-          authorizationToken:
-              FirebaseAuth.instance.currentUser!.getIdToken().toString());
+  data_product_repository.ProductRepository? _productRepository;
+
+  Future<data_product_repository.ProductRepository>
+      _getProductRepository() async {
+    if (_productRepository == null) {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      final token = await currentUser!.getIdToken();
+      _productRepository =
+          data_product_repository.ProductRepository(authorizationToken: token);
+    }
+    return _productRepository!;
+  }
 
   Future<Product> getOne({required String id}) async {
-    return Product.fromDataModel(await _productRepository
+    final productRepository = await _getProductRepository();
+    return Product.fromDataModel(await productRepository
         .fetchOne(id: id)
         .then((value) => value.content));
   }
 
-  Future<List<Product>> getAll() async {
-    return Product.listFromMapData(
-        await _productRepository.fetchAll().then((value) => value.content));
+  Future<List<Product>> getAll({String? page, String? size}) async {
+    final productRepository = await _getProductRepository();
+    return Product.listFromMapData(await productRepository
+        .fetchAll(
+          page: page ?? '1',
+          size: size ?? '6',
+        )
+        .then((value) => value.content));
   }
 }

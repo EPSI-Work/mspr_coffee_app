@@ -42,7 +42,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       status: ProductStatus.inProgress,
     ));
     try {
-      await _productRepository.getAll().then((value) {
+      await _productRepository
+          .getAll(
+        page: event.page,
+        size: event.size,
+      )
+          .then((value) {
         emit(state.copyWith(
           status: ProductStatus.success,
           products: value,

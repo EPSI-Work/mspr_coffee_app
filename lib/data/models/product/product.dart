@@ -7,13 +7,15 @@ part 'product.g.dart';
 class Product {
   final String id;
   final String name;
+  final String? subtitle;
   final int stock;
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
-  final Details details;
+  final Details? details;
   const Product({
     required this.id,
     required this.name,
+    required this.subtitle,
     required this.stock,
     required this.createdAt,
     required this.details,
@@ -43,8 +45,10 @@ class Product {
     return {
       'id': id,
       'name': name,
+      'subtitle': subtitle,
       'stock': stock,
       'created_at': createdAt.toIso8601String(),
+      'details': details?.toMap(),
     };
   }
 
@@ -52,6 +56,7 @@ class Product {
     return Product(
       id: map['id'],
       name: map['name'],
+      subtitle: map['subtitle'],
       stock: map['stock'],
       createdAt: DateTime.parse(map['created_at']),
       details: Details.fromMap(map['details']),

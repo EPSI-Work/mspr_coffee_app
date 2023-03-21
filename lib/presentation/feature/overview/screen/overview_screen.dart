@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mspr_coffee_app/presentation/app/bloc/product_bloc/product_bloc.dart';
 import 'package:mspr_coffee_app/presentation/feature/overview/view/overview_view.dart';
 
 class OverviewScreen extends StatelessWidget {
@@ -6,6 +8,9 @@ class OverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OverviewView();
+    return BlocProvider(
+      create: (context) => ProductBloc()..add(ProductFetchAll()),
+      child: OverviewView(),
+    );
   }
 }

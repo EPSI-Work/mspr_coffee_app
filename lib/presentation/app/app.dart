@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:mspr_coffee_app/presentation/app/app_route.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/app_bloc.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/auth_bloc.dart';
-import 'package:mspr_coffee_app/presentation/app/bloc/product_bloc/product_bloc.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/theme_bloc.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/user_bloc.dart';
 import 'package:mspr_coffee_app/src/settings/settings_controller.dart';
@@ -100,7 +99,6 @@ class _AppRootState extends State<AppRoot> {
                 value: _authBloc,
               ),
               BlocProvider(create: (context) => UserBloc()),
-              BlocProvider(create: (context) => ProductBloc()),
             ],
             child: BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {

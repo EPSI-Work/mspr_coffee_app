@@ -6,7 +6,7 @@ part 'details.g.dart';
 
 @JsonSerializable()
 class Details {
-  final int price;
+  final double price;
   final String description;
   final String color;
   const Details({

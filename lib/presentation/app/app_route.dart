@@ -106,8 +106,7 @@ enum AppRoute {
         name: AppRoute.product.name,
         path: AppRoute.product.path,
         builder: (context, state) {
-          if (state.params['id'] != null &&
-              int.tryParse(state.params['id']!) != null) {
+          if (state.params['id'] != null) {
             return ProductScreen(
               id: state.params['id']!,
               image: state.queryParams['image'] ?? '',

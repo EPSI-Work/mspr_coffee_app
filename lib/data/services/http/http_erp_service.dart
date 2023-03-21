@@ -1,4 +1,5 @@
 import 'package:mspr_coffee_app/data/services/http/http_service.dart';
+import 'package:mspr_coffee_app/data/services/logger/logger_service.dart';
 
 class HttpErpService extends HttpService {
   @override
@@ -6,16 +7,35 @@ class HttpErpService extends HttpService {
   @override
   final String version = '';
   @override
-  final String apiKey =
-      'ewogICJpc3MiOiAiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL21zcHItZXBzaS1jb2ZmZWUiLAogICJhdWQiOiAibXNwci1lcHNpLWNvZmZlZSIsCiAgImF1dGhfdGltZSI6IDE2Nzg5NTg3MjgsCn0=';
+  final String apiKey = 'C26cIff46sm';
   @override
   final String? xApiGateway = null;
   @override
   final String authorizationToken;
+
+  @override
+  final LoggerService loggerService = LoggerService();
   HttpErpService({required this.authorizationToken}) : super();
 
   @override
-  String buildUrl(String endpoint) {
+  String buildUrl(String endpoint, {String params = ''}) {
+    if (baseUrl == '') {
+      throw Exception('baseUrl is empty');
+    }
+    if (apiKey == '') {
+      throw Exception('apiKey is empty');
+    }
+    if (version == '') {
+      if (params != '') {
+        return '$baseUrl/$endpoint?api_key=$apiKey&$params';
+      } else {
+        return '$baseUrl/$endpoint?api_key=$apiKey';
+      }
+    }
+
+    if (params != '') {
+      return '$baseUrl/$version/$endpoint?api_key=$apiKey&$params';
+    }
     return '$baseUrl/$version/$endpoint?api_key=$apiKey';
   }
 }

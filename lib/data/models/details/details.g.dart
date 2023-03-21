@@ -7,7 +7,7 @@ part of 'details.dart';
 // **************************************************************************
 
 Details _$DetailsFromJson(Map<String, dynamic> json) => Details(
-      price: json['price'] as int,
+      price: (json['price'] as num).toDouble(),
       description: json['description'] as String,
       color: json['color'] as String,
     );
