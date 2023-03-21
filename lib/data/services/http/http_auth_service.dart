@@ -6,5 +6,9 @@ class HttpAuthService extends HttpService {
       'https://europe-west1-mspr-epsi-coffee.cloudfunctions.net/auth';
   @override
   final String version = 'v1';
+  @override
+  final String? xApiGateway = null;
+  @override
+  final String? authorizationToken = null;
   HttpAuthService() : super();
 }

@@ -1,20 +1,33 @@
 import 'dart:convert';
 import 'dart:io';
 
-class HttpSuccessResponse extends HttpResponse {
+class HttpSuccessResponse<T> extends HttpResponse {
   final int statusCode;
-  final dynamic responseJson;
+  final dynamic content;
+  final Encoding encoding;
 
-  HttpSuccessResponse(this.statusCode, this.responseJson,
-      {this.encoding = utf8});
+  HttpSuccessResponse(this.statusCode, {this.content, this.encoding = utf8});
 
-  @override
-  String toString() {
-    return "SuccessResponse: statusCode=$statusCode, responseJson=$responseJson";
+  T get responseJson => content is Map<String, dynamic>
+      ? _convertToType<T>(content)
+      : content as T;
+
+  T _convertToType<T>(dynamic json) {
+    if (json is Map<String, dynamic>) {
+      try {
+        return jsonDecode(jsonEncode(json)) as T;
+      } catch (e) {
+        throw Exception("Failed to convert JSON to type '$T': $e");
+      }
+    } else {
+      throw Exception("Invalid JSON type: ${json.runtimeType}");
+    }
   }
 
   @override
-  Encoding encoding;
+  String toString() {
+    return "SuccessResponse: statusCode=$statusCode, content=$content";
+  }
 
   @override
   void add(List<int> data) {
@@ -39,11 +52,9 @@ class HttpSuccessResponse extends HttpResponse {
   }
 
   @override
-  // TODO: implement connectionInfo
   HttpConnectionInfo? get connectionInfo => throw UnimplementedError();
 
   @override
-  // TODO: implement cookies
   List<Cookie> get cookies => throw UnimplementedError();
 
   @override
@@ -53,7 +64,6 @@ class HttpSuccessResponse extends HttpResponse {
   }
 
   @override
-  // TODO: implement done
   Future get done => throw UnimplementedError();
 
   @override
@@ -63,7 +73,6 @@ class HttpSuccessResponse extends HttpResponse {
   }
 
   @override
-  // TODO: implement headers
   HttpHeaders get headers => throw UnimplementedError();
 
   @override
@@ -90,5 +99,10 @@ class HttpSuccessResponse extends HttpResponse {
   @override
   void writeln([Object? object = ""]) {
     // TODO: implement writeln
+  }
+
+  @override
+  set encoding(Encoding _encoding) {
+    // TODO: implement encoding
   }
 }

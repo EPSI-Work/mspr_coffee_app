@@ -79,7 +79,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     try {
       if (FirebaseAuthRepository.firebaseAuthInstance.currentUser != null) {
         print('On start the user is signed in');
-        //await FirebaseAuthRepository.firebaseAuthInstance.signOut();
         await AuthRepository()
             .whoAmI(
                 firebaseUser:
