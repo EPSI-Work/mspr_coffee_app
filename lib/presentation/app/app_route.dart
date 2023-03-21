@@ -110,6 +110,7 @@ enum AppRoute {
               int.tryParse(state.params['id']!) != null) {
             return ProductScreen(
               id: state.params['id']!,
+              image: state.queryParams['image'] ?? '',
             );
           } else {
             return AppRoute.home.screen!;

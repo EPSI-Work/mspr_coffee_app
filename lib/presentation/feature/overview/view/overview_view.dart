@@ -7,6 +7,11 @@ class OverviewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> images = [
+      'assets/images/coffee1.png',
+      'assets/images/coffee2.png',
+      'assets/images/coffee3.png',
+    ];
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -100,8 +105,17 @@ class OverviewView extends StatelessWidget {
                               child: Container(
                                 margin: const EdgeInsets.all(14),
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: Color(0xFF7AA79D),
                                   borderRadius: BorderRadius.circular(22),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Center(
+                                    child: Image.asset(
+                                      images[index % 3],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -138,15 +152,19 @@ class OverviewView extends StatelessWidget {
                                         GestureDetector(
                                           onTap: () {
                                             context.pushNamed(
-                                              AppRoute.product.name,
-                                              params: {'id': index.toString()},
-                                            );
+                                                AppRoute.product.name,
+                                                params: {
+                                                  'id': index.toString()
+                                                },
+                                                queryParams: {
+                                                  'image': images[index % 3]
+                                                });
                                           },
                                           child: Container(
                                             height: 36,
                                             width: 36,
                                             decoration: BoxDecoration(
-                                              color: Colors.blue,
+                                              color: Color(0xFFEB8D59),
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                               boxShadow: [
@@ -219,8 +237,17 @@ class OverviewView extends StatelessWidget {
                                     height: 64,
                                     width: 64,
                                     decoration: BoxDecoration(
-                                      color: Colors.blue,
+                                      color: Color(0xFF7AA79D),
                                       borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Center(
+                                        child: Image.asset(
+                                          images[index % 3],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(

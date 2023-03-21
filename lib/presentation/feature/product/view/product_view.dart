@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProductView extends StatelessWidget {
-  const ProductView({super.key});
+  final String image;
+  const ProductView({
+    super.key,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +37,19 @@ class ProductView extends StatelessWidget {
               flex: 2,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xFF7AA79D),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Center(
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -141,7 +154,7 @@ class ProductView extends StatelessWidget {
                       height: 70,
                       width: 70,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFFEB8D59),
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       child: Center(
@@ -153,7 +166,7 @@ class ProductView extends StatelessWidget {
                         height: 70,
                         width: 260,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Color(0xFF7AA79D),
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
                         child: Row(
