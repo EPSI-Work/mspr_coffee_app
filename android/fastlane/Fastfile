@@ -20,22 +20,22 @@ platform :android do
   lane :test do
     gradle(task: "test")
   end
-
+ 
   desc "Submit a new Beta Build to Google Play Beta"
   lane :beta do
+    Dir.chdir "../.." do sh("flutter", "build", "appbundle", "--release") end # Call Flutter Build
     gradle(
       task: 'bundle',
       build_type: 'Release'
     )
     upload_to_play_store(
       track: 'internal',
-      version_code: 2
+      version_code: flutter_version()["version_code"],
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      release_status: 'draft',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
     )
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
   end
 end
