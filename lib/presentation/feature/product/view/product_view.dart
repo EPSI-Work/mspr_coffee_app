@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mspr_coffee_app/presentation/app/bloc/product_bloc/product_bloc.dart';
+import 'package:mspr_coffee_app/presentation/feature/product/widget/product_ar_widget.dart';
 
 class ProductView extends StatelessWidget {
   final String image;
@@ -111,6 +112,8 @@ class ProductView extends StatelessWidget {
                                 Text(
                                   state.product.details?.description ?? '',
                                   style: Theme.of(context).textTheme.bodyMedium,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
@@ -183,28 +186,40 @@ class ProductView extends StatelessWidget {
                                   size: 30, color: Colors.white),
                             ),
                           ),
-                          Container(
-                              height: 70,
-                              width: 260,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF7AA79D),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.shopping_bag_outlined,
-                                      size: 30, color: Colors.white),
-                                  Text(
-                                    'Add to cart',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                ],
-                              )),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CustomObjectPage(
+                                            title: state.product.name ??
+                                                "3D Object",
+                                          )));
+                            },
+                            child: Container(
+                                height: 70,
+                                width: 260,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF7AA79D),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.view_in_ar,
+                                        size: 30, color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      'See it !',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ],
+                                )),
+                          ),
                         ]),
                   )
                 ],
