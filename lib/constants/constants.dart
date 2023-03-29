@@ -27,7 +27,7 @@ class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
 
-const Color primaryColor = Color(0xFF6648FF);
+const Color primaryColor = Color(0xFF7AA79D);
 
 const MaterialColor primaryMaterialColor =
     MaterialColor(0xFF9581FF, <int, Color>{

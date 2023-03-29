@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20 / 2),
                     Text(
-                      "Prêt.e pour reprendre toutes tes bonnes habitudes ? Nous sommes la pour t’aider !",
+                      "Connectez vous pour accéder à notre catalogue !",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     const SizedBox(height: 20),
